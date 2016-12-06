@@ -1,0 +1,17 @@
+{%  extends 'data/base.html' %}
+
+{% block title %}Library | Books{% endblock %}
+{% block body %}
+
+
+
+
+{% for book in object_list %}
+<ul>
+    <li><a href="{% url 'data:detail' book.id %}">  {{ book.title }}  </a>
+
+
+</ul>
+{% endfor %}
+
+{%  endblock %}

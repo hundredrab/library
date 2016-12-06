@@ -1,0 +1,22 @@
+{%  extends 'data/base.html' %}
+{% block title %}Library | Details{% endblock %}
+
+{% block body %}
+
+
+{{ book }}
+<br>
+<h1>{{ book.author }}</h1>
+<h2>{{ book.title }}</h2>
+<h3>Subject: <font color="#8a2be2">{{ book.subject }}</font></h3>
+
+{%  if err_message %}
+    <p><strong>{{ err_message }}</strong></p>
+{% endif %}
+
+<form action="{% url 'data:detail' book.id %}" method="post">
+    <input type="text" value="{{ book.id }}" name="book">
+    <input type="submit" value="submit">
+</form>
+
+{%  endblock %}
