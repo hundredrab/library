@@ -19,7 +19,7 @@ class Book(models.Model):
     author = models.CharField(max_length=250)
     title = models.CharField(max_length=500)
     subject = models.CharField(max_length=100)
-    image = models.FileField()
+    image = models.CharField(max_length=1000)
     #subcode = models.ForeignKey(Subject, on_delete=models.CASCADE)
 
     def get_absolute_url(self):

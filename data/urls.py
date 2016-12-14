@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth import login
 
 from . import views
 
@@ -8,9 +9,6 @@ app_name='data'
 urlpatterns = [
     # /data/
     url(r'^$', views.IndexView.as_view(), name='index'),
-
-    # /data/register/
-    url(r'^register/$', views.UserFormView.as_view(), name='register'),
 
     # /data/123  <--book.id
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
@@ -24,9 +22,10 @@ urlpatterns = [
     # /data/book/123/delete/
     url(r'book/(?P<pk>[0-9]+)/delete/$', views.BookDelete.as_view(), name='book-delete'),
 
-    # /data/login
-    #url(r'^login/$', 'django.contrib.auth.views.login', {
- #       'template_name': 'data/login.html'
-#}),
+    # /data/register/
+    url(r'^register/$', views.UserFormView.as_view(), name='register'),
 
+    # /data/login
+    url(r'^login/$', views.login_view, name='login'),
+    
 ]
